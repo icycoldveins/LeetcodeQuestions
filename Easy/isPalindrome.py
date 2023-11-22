@@ -23,3 +23,16 @@ class Solution(object):
             right -= 1
 
         return True
+
+# alternative solution
+# 1 class Solution(object):
+# 2    def isPalindrome(self, s):
+# 3        """
+# 4        :type s: str
+# 5        :rtype: bool
+# 6        """
+# 7        # Filter out non-alphanumeric characters and convert to lowercase
+# 8        filtered_chars = [char.lower() for char in s if char.isalnum()]
+# 9        
+# 10       # Check if the filtered string is a palindrome
+# 11       return filtered_chars == filtered_chars[::-1]
