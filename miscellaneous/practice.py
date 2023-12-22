@@ -1,17 +1,19 @@
 class Solution(object):
-    def maxArea(self, height):
+    def isPalindrome(self, s):
         """
-        :type height: List[int]
-        :rtype: int
+        :type s: str
+        :rtype: bool
         """
-        l,r = 0,len(height)-1
-        maximumarea,maximumwidth=0,len(height)-1
-        for currentWidth in range(maximumwidth,0,-1):
-            if height[l]<height[r]:
-                maximumarea=max(maximumarea,height[l]*currentWidth)
-                l+=1
-            elif height[r]<=height[l]:
-                maximumarea=max(maximumarea,height[r]*currentWidth)
-                r-=1
-        return maximumarea     
-        
+        left, right = 0, len(s)-1
+        while left < right:
+            if not s[left].isalnum():
+                left += 1
+            elif not s[right].isalnum():
+                right -= 1
+            else:
+                if s[left].lower() != s[right].lower():
+                    return False
+                else:
+                    left+=1
+                    right-=1
+        return True
