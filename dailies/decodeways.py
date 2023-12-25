@@ -1,21 +1,30 @@
-def numDecodings(s): 
-	if not s:
-		return 0
+class Solution:
+    def numDecodings(self, s: str) -> int:
+        if not s or s[0] == '0':  # if string is empty or starts with '0'
+            return 0
 
-	dp = [0 for x in range(len(s) + 1)] 
-	
-	# base case initialization
-	dp[0] = 1 
-	dp[1] = 0 if s[0] == "0" else 1   #(1)
+        # dp[i] will hold the total number of ways to decode up to length i
+        dp = [0] * (len(s) + 1)
+        dp[0] = 1  # There's one way to decode an empty string
+        dp[1] = 1  # There's one way to decode if it's not starting with '0'
 
-	for i in range(2, len(s) + 1): 
-		# One step jump
-		if 0 < int(s[i-1:i]) <= 9:    #(2)
-			dp[i] += dp[i - 1]
-		# Two step jump
-		if 10 <= int(s[i-2:i]) <= 26: #(3)
-			dp[i] += dp[i - 2]
-	return dp[len(s)]
+        for i in range(2, len(s) + 1):
+            # Check for a single digit decode (1-9)
+            if s[i - 1] != '0':
+                dp[i] += dp[i - 1]
+
+            # Check for two digit decode (10-26)
+            two_digit = int(s[i - 2:i])  # Convert the two chars to a number
+            if 10 <= two_digit <= 26:
+                dp[i] += dp[i - 2]
+
+        return dp[len(s)]
+
+# Example usage:
+# sol = Solution()
+# print(sol.numDecodings("226"))  # Output: 3
+
+
 """ Let's walk through the solution using the example input string `s = "226"`. Remember, the goal is to find the total number of ways to decode this string given the mapping ('1' -> 'A', '2' -> 'B', ..., '26' -> 'Z').
 
 ### Step 1: Handle Edge Cases
@@ -65,3 +74,21 @@ Now, `dp` looks like `[1, 1, 3, 4]`.
     2. "B" "Z" - "2" "26"
     3. "VF" - "22" "6"
 - The dynamic programming solution correctly identifies that there are 3 ways to decode it. """
+"""  def numDecodings(s): 
+	if not s:
+		return 0
+
+	dp = [0 for x in range(len(s) + 1)] 
+	
+	# base case initialization
+	dp[0] = 1 
+	dp[1] = 0 if s[0] == "0" else 1   #(1)
+
+	for i in range(2, len(s) + 1): 
+		# One step jump
+		if 0 < int(s[i-1:i]) <= 9:    #(2)
+			dp[i] += dp[i - 1]
+		# Two step jump
+		if 10 <= int(s[i-2:i]) <= 26: #(3)
+			dp[i] += dp[i - 2]
+	return dp[len(s)]"""
