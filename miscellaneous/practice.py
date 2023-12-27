@@ -1,18 +1,17 @@
 class Solution(object):
-    def searchMatrix(self, matrix, target):
+    def search(self, nums, target):
         """
-        :type matrix: List[List[int]]
+        :type nums: List[int]
         :type target: int
-        :rtype: bool
+        :rtype: int
         """
-        left, right = 0, len(matrix-1)
-
-        while (left <= right):
-            midarray = left+(right-left)//2
-            if target in matrix[midarray]:
-                return True
-            elif matrix[midarray] < target:
-                left = midarray + 1
+        left, right = 0, len(nums) - 1
+        while left <= right:
+            mid = left + (right - left) // 2
+            if nums[mid] == target:
+                return mid
+            elif nums[mid] < target:
+                left = mid + 1
             else:
-                right = midarray - 1
-            return False
+                right = mid - 1
+        return -1
