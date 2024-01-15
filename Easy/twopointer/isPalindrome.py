@@ -33,6 +33,6 @@ class Solution(object):
 # 6        """
 # 7        # Filter out non-alphanumeric characters and convert to lowercase
 # 8        filtered_chars = [char.lower() for char in s if char.isalnum()]
-# 9        
+# 9
 # 10       # Check if the filtered string is a palindrome
 # 11       return filtered_chars == filtered_chars[::-1]
