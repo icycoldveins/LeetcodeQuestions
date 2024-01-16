@@ -1,0 +1,17 @@
+class Solution:
+    def subsets(self, nums):
+        def backtrack(start, current):
+            # Add the current combination to the output
+            output.append(current[:])
+            for i in range(start, len(nums)):
+                # Include nums[i]
+                current.append(nums[i])
+                # Move on to the next element
+                backtrack(i + 1, current)
+                # Exclude nums[i]
+                current.pop()
+
+        output = []
+        backtrack(0, [])
+        return output
+
