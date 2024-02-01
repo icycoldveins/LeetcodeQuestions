@@ -1,5 +1,5 @@
 class Solution(object):
-    def coinChange(self, coins, amount):
+    def coinChangeBU(self, coins, amount):
         """
         :type coins: List[int] - List of coin denominations available.
         :type amount: int - The target amount to be made up.
@@ -33,7 +33,7 @@ class Solution(object):
         return dp[amount]
 
 class Solution(object):
-    def coinChange(self, coins, amount):
+    def coinChangeTD(self, coins, amount):
         # Create a memoization dictionary to store computed results.
         memo = {}
         
