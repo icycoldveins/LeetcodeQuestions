@@ -24,3 +24,44 @@ class Solution:
                     min_start, min_end = start_window, end_window
         # Return the minimum window from the source string
         return source[min_start:min_end]
+    def minWindow2(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: str
+        """
+        # Create a dictionary to store the frequency of characters in 't'
+        char_count = {}
+        for char in t:
+            char_count[char] = char_count.get(char, 0) + 1
+
+        # Initialize variables for the sliding window
+        left = 0
+        min_len = float('inf')
+        min_window = ""
+        char_found = 0
+
+        # Start and end pointers of the sliding window
+        for right in range(len(s)):
+            # If the character at the right pointer is in 't', decrement its count in 'char_count'
+            if s[right] in char_count:
+                char_count[s[right]] -= 1
+                if char_count[s[right]] >= 0:
+                    char_found += 1
+
+            # If all characters in 't' are found in the current window
+            while char_found == len(t):
+                # Update the minimum window if needed
+                if right - left + 1 < min_len:
+                    min_len = right - left + 1
+                    min_window = s[left:right + 1]
+
+                # Move the left pointer to shrink the window
+                if s[left] in char_count:
+                    char_count[s[left]] += 1
+                    if char_count[s[left]] > 0:
+                        char_found -= 1
+
+                left += 1
+
+        return min_window
