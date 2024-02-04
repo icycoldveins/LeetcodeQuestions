@@ -1,11 +1,23 @@
 class Solution(object):
     def topKFrequent(self, nums, k):
-        frequency = {}
-        for num in nums:
-            if num in frequency:
-                frequency[num] += 1
-            else:
-                frequency[num] = 1
-        freq_list = sorted(frequency.items(), key=lambda x: x[1], reverse=True)
-        top_k_elements = [item[0] for item in freq_list[:k]]
-        return top_k_elements
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
+        count = {}
+        freq = [[] for i in range(len(nums) + 1)]
+
+        for n in nums:
+            count[n] = 1 + count.get(n, 0)
+
+        for n, c in count.items():
+            freq[c].append(n)
+
+        res = []
+
+        for i in range(len(freq) - 1, 0, -1):
+            for n in freq[i]:
+                res.append(n)
+                if len(res) == k:
+                    return res
