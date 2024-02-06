@@ -5,7 +5,8 @@ class Solution:
         maximumProfit = 0  # Maximum profit that can be achieved
 
         while sellDay < len(prices):
-            profitIfSoldToday = prices[sellDay] - prices[buyDay]  # Profit if sold on 'sellDay'
+            # Profit if sold on 'sellDay'
+            profitIfSoldToday = prices[sellDay] - prices[buyDay]
 
             if prices[buyDay] < prices[sellDay]:
                 maximumProfit = max(profitIfSoldToday, maximumProfit)
@@ -15,3 +16,17 @@ class Solution:
             sellDay += 1  # Move to the next day to check selling price
 
         return maximumProfit
+
+    def maxProfit2(self, prices):
+        min_price = float('inf')  # Initialize to positive infinity
+        max_profit = 0
+
+        for price in prices:
+            if price < min_price:
+                min_price = price
+            else:
+                potential_profit = price - min_price
+                if potential_profit > max_profit:
+                    max_profit = potential_profit
+
+        return max_profit
