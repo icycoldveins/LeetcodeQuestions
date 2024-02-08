@@ -32,3 +32,4 @@ class Solution:
             dfs(i + 1)
         dfs(0)
         return res
+    
