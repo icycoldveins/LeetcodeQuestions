@@ -43,8 +43,7 @@ class Solution(object):
 
             elif eventType == "end":
                 processId, startTime = stack.pop()
-                timeSpent = int(time) - int(startTime) + \
-                    1  # Add 1 cause 0 is included
+                timeSpent = int(time) - int(startTime) + 1
                 result[int(processId)] += timeSpent
 
                 # Decrement time for next process in the stack
