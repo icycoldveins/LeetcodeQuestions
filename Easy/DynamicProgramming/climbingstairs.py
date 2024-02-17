@@ -1,16 +1,22 @@
-class Solution(object):
-    def climbStairs(self, n):
-        # Create a DP array to store the number of ways to reach each step
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        if n == 1:
+            return 1
         dp = [0] * (n + 1)
-
-        # There is 1 way to reach step 0 and 1 way to reach step 1
-        dp[0] = 1
-        dp[1] = 1
-
-        # Use DP to calculate the number of ways for each step from 2 to n
+        dp[0], dp[1] = 1, 1
         for i in range(2, n + 1):
             dp[i] = dp[i - 1] + dp[i - 2]
-
-        # The final element of the DP array will contain the number of ways to reach the top
         return dp[n]
-
+class Solution:
+    def __init__(self):
+        self.memo = {}
+        
+    def climbStairs(self, n: int) -> int:
+        if n in self.memo:
+            return self.memo[n]
+        if n == 1:
+            return 1
+        if n == 2:
+            return 2
+        self.memo[n] = self.climbStairs(n - 1) + self.climbStairs(n - 2)
+        return self.memo[n]
