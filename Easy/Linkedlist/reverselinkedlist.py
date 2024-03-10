@@ -8,11 +8,10 @@ class Solution(object):
         current = head
 
         while current:
-            next_node = current.next  # Save the next node
+            next_node = current.next # Save the next node
             current.next = prev      # Reverse the current node
             prev = current           # Move prev to the current node
             current = next_node      # Move current to the next node
-
         return prev
 
 

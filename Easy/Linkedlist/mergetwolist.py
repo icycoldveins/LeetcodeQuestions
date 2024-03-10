@@ -8,7 +8,7 @@ class ListNode:
 class Solution:
     def mergeTwoLists(self, list1, list2):
         # Initialize a dummy node as the head of the merged list
-        dummy = ListNode(-1)
+        dummy = ListNode()
         current = dummy
 
         # Initialize pointers for list1 and list2

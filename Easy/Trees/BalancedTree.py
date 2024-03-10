@@ -27,20 +27,18 @@ class Solution(object):
 #         self.left = None
 #         self.right = None
 
-
-
-
     def isBalanced2(self, root):
         """
         :type root: TreeNode
         :rtype: bool
-        """ 
+        """
         if root == None:
             return True
         l = self.depth(root.left)
         r = self.depth(root.right)
-        return (abs(l-r) <2) and self.isBalanced(root.left) and self.isBalanced(root.right)
-    
-    def depth(self,node):
-        if node == None: return 0
-        return max(self.depth(node.left),self.depth(node.right))+1
+        return (abs(l-r) < 2) and self.isBalanced(root.left) and self.isBalanced(root.right)
+
+    def depth(self, node):
+        if node == None:
+            return 0
+        return max(self.depth(node.left), self.depth(node.right))+1
