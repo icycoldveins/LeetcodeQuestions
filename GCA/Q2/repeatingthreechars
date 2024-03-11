@@ -1,0 +1,25 @@
+from collections import Counter
+
+
+def count_words_with_repeating_chars(input_string):
+    # Split the input string into individual words
+    words = input_string.split()
+
+    # Initialize a counter to keep track of words with at least three repeating characters    count = 0    # Iterate through each word in the input string
+    for word in words:
+        # Count the occurrences of each character in the word using Counter
+        char_count = Counter(word)
+
+        # Check if any character in the word has occurred at least three times
+        if any(count >= 3 for count in char_count.values()):
+            # If so, increment the counter for words with at least three repeating characters
+            count += 1
+
+    # Return the count of words with at least three repeating characters
+    return count
+
+
+# Example usage:
+input_string = "This string has several words with repeating characters like banana, pepper, and balloon."
+count = count_words_with_repeating_chars(input_string)
+print("Number of words with at least three repeating characters:", count)
