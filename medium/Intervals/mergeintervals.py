@@ -14,4 +14,4 @@ def merge(intervals):
             # If there is an overlap, merge the intervals by updating the end value
             merged_intervals[-1][1] = max(merged_intervals[-1][1], interval[1])
 
-    return merged_intervals
+    return merged_interval
