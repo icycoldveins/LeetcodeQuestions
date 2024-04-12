@@ -7,10 +7,12 @@ class Solution:
         for i in range(2, n + 1):
             dp[i] = dp[i - 1] + dp[i - 2]
         return dp[n]
+
+
 class Solution:
     def __init__(self):
         self.memo = {}
-        
+
     def climbStairs(self, n: int) -> int:
         if n in self.memo:
             return self.memo[n]
