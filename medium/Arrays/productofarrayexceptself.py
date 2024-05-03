@@ -20,5 +20,5 @@ class Solution(object):
         for i in range(n - 1, -1, -1):
             result[i] = left[i] * right_product
             right_product *= nums[i]
-        
+    
         return result

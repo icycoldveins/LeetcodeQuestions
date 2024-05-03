@@ -23,6 +23,7 @@ class Solution:
         backtrack(target, [], 0)
         return result
     # neetcodes solution
+
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         res = []
 
@@ -32,12 +33,11 @@ class Solution:
                 return
             if i >= len(candidates) or total > target:
                 return
-            
+
             cur.append(candidates[i])
             dfs(i, cur, total + candidates[i])
             cur.pop()
-            dfs(i + 1, cur, total)
-        
+            dfs(i+1, cur, total)
+
         dfs(0, [], 0)
         return res
-                       
