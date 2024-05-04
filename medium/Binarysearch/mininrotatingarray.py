@@ -11,7 +11,7 @@ class Solution:
         while l <= r:
             if nums[l] < nums[r]:
                 res = min(res, nums[l])
-                return
+                break
             mid = (l+r)//2
             res = min(res, nums[mid])
             if nums[mid] >= nums[l]:
