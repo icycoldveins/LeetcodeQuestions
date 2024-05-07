@@ -19,3 +19,13 @@ class Solution(object):
             dp[i] = max(dp[i-1], dp[i-2] + nums[i])
 
         return dp[n-1]
+
+
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        house1, house2 = 0, 0
+        for stash in nums:
+            newrob = max(stash + house1, house2)
+            house1 = house2
+            house2 = newrob
+        return house2

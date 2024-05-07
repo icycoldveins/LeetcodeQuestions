@@ -22,3 +22,11 @@ class Solution:
             return 2
         self.memo[n] = self.climbStairs(n - 1) + self.climbStairs(n - 2)
         return self.memo[n]
+
+
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        one, two = 1, 1
+        for i in range(n):
+            one, two = two, one + two
+        return one
