@@ -21,3 +21,4 @@ class Solution:
 
         # Return the root of the inverted tree
         return root
+        
