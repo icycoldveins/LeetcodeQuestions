@@ -56,4 +56,4 @@ class Solution:
             # in this way, we iterate through all elements of nums
             nums.append(n)
 
-        return res
+        return res 

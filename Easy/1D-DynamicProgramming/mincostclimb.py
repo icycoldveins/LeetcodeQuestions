@@ -32,8 +32,16 @@ class Solution:
 
         return min(dp[n-1], dp[n-2])
 
-
-solution = Solution()
-cost = [10, 15, 20]
-result = solution.minCostClimbingStairs(cost)
-print("Number of distinct ways to climb to the top with", cost, "steps:", result)
+    def minCostClimbingKevin(self, cost: List[int]) -> int:
+        # we have an array called cost
+        # cost[i] would be the cost of the ith step
+        # ex:cost[1] = 1st step
+        # after paying you can climb one or two
+        # start is from index 0 or index 1
+        # return min cost
+        # the top would be if we go over the length of cost
+        for i in range(2, len(cost)):
+            # cost at this index will be updated by the two previous values
+            cost[i] += min([cost[i-2], cost[i-1]])
+            # since we go over from the second to last or last step return min
+        return min(cost[-1], cost[-2])

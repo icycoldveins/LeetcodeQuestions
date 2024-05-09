@@ -8,6 +8,7 @@ class Solution(object):
         left, right = 0, len(nums) - 1
         while left <= right:
             # with overflow fix
+            # mid=left+(right-left)//2
             # without would be mid=(left+right)//2
             mid = (left + right) // 2
             if nums[mid] == target:
