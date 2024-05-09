@@ -22,6 +22,7 @@ class Solution:
         """
         res = []
         subset = []
+
         def dfs(i):
             if i >= len(nums):
                 res.append(subset[:])
@@ -32,4 +33,7 @@ class Solution:
             dfs(i + 1)
         dfs(0)
         return res
-    
+
+
+riku = Solution()
+print(riku.subsets2([1, 2, 3]))

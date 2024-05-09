@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def permute(self, nums):
         def backtrack(first=0):
