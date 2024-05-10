@@ -1,12 +1,14 @@
-class Solution(object):
-    def lengthOfLongestSubstring(self, string):
-        uniqueCharacters = set()
-        maxLengthFound = 0
-        windowStart = 0
-        for windowEnd in range(len(string)):
-            while string[windowEnd] in uniqueCharacters:
-                uniqueCharacters.remove(string[windowStart])
-                windowStart += 1
-            uniqueCharacters.add(string[windowEnd])
-            maxLengthFound = max(maxLengthFound, windowEnd - windowStart + 1)
-        return maxLengthFound
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        maxlen = 0
+        start = 0
+        uniqueset = set()
+        for end in range(len(s)):
+            while s[end] in uniqueset:
+                uniqueset.remove(s[start])
+                start += 1
+            uniqueset.add(s[end])
+            maxlen = max(maxlen, end-start+1)
+        return maxlen
+mapper=Solution()
+mapper.lengthOfLongestSubstring("pwwkew")
